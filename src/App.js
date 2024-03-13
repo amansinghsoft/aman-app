@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React,{ useState } from 'react';
 import Alert from './components/Alert';
-import PropTypes from 'prop-types';
+
 
 //import About from './components/About';
 
@@ -34,9 +34,21 @@ function App() {
           showAlert("Light mode has been enabled.","Success");
         }
       }
+  const yellowMode =() =>{
+        if(mode === 'light'){
+          setMode('dark');
+          document.body.style.backgroundColor ='#3B4207';
+          showAlert("Dark mode has been enabled.","Success");
+
+        }else{
+          setMode('light');
+          document.body.style.backgroundColor ='white';
+          showAlert("Light mode has been enabled.","Success");
+        }
+      }
   return (
   <>
-    <Navbar title="TextUtils" About="About" mode={mode} toggleMode={toggleMode} />
+    <Navbar title="TextUtils" About="About" mode={mode} toggleMode={toggleMode} yellowMode={yellowMode}/>
     <Alert alert={alert}/>
     <dev className="center">
     {/*<About/>*/}
