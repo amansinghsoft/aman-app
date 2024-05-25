@@ -1,13 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
 import './index.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+import About from './components/About'
 import React,{ useState } from 'react';
 import Alert from './components/Alert';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-//import About from './components/About';
 
 function App() {
   const[mode,setMode]=useState('light');
@@ -28,12 +32,12 @@ function App() {
           document.body.style.backgroundColor ='#12385e';
           showAlert("Dark mode has been enabled.","Success");
           document.title = 'TextUtils . Dark Mode';
-         setInterval(() => {
+        setInterval(() => {
             document.title = 'TextUtils is Amazing Mode';
-          }, 3000);
-          setInterval(() => {
+          }, 2500);
+        setInterval(() => {
             document.title = 'Install TextUtils Now';
-          }, 1000);
+          }, 2000);
 
         }else{
           setMode('light');
@@ -57,12 +61,20 @@ function App() {
       }
   return (
   <>
+  <Router>
     <Navbar title="TextUtils" About="About" mode={mode} toggleMode={toggleMode} yellowMode={yellowMode}/>
     <Alert alert={alert}/>
     <dev className="center">
-    {/*<About/>*/}
-    <TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={mode}/> 
+    <Switch>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/">
+          <TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={mode}/> 
+          </Route>
+    </Switch>
     </dev>
+    </Router>
   </>
   );
 }
