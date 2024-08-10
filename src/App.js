@@ -6,11 +6,11 @@ import About from './components/About'
 import React,{ useState } from 'react';
 import Alert from './components/Alert';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+//import {
+  //BrowserRouter as Router,
+  //Switch,
+  //Route
+//} from "react-router-dom";
 
 
 function App() {
@@ -61,20 +61,20 @@ function App() {
       }
   return (
   <>
-  <Router>
+  {/*<Router>*/}
     <Navbar title="TextUtils" About="About" mode={mode} toggleMode={toggleMode} yellowMode={yellowMode}/>
     <Alert alert={alert}/>
     <dev className="center">
-    <Switch>
-          <Route exact path="/about">
+    {/*<Switch>*/}
+          {/*<Route exact path="/about">
             <About />
-          </Route>
-          <Route exact path="/">
+            </Route>*/}
+          {/*<Route exact path="/">*/}
           <TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={mode}/> 
-          </Route>
-    </Switch>
+          {/*</dev></Route>*/}
+    {/*</Switch>*/}
     </dev>
-    </Router>
+     {/*</Router> */} 
   </>
   );
 }
